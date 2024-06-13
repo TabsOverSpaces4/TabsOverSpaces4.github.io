@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b49d04fe.css",
+    "main.js": "/static/js/main.e229d3cb.js",
+    "static/media/about.png": "/static/media/about.826b89e7d84709a2f648.png",
+    "static/media/site-bg.png": "/static/media/site-bg.d03dbdafacce3b1d957a.png",
+    "static/media/PPP.png": "/static/media/PPP.665eaf328c9fa619acba.png",
+    "static/media/RideRight.jpg": "/static/media/RideRight.f9b43bd225eb612b3191.jpg",
+    "static/media/image2.png": "/static/media/image2.100bd55cb65db0363401.png",
+    "static/media/hgEdits.jpg": "/static/media/hgEdits.bb804f281abe21c44fa4.jpg",
+    "static/media/ReachU.jpg": "/static/media/ReachU.2e7360b11292431d5e79.jpg",
+    "static/media/DP.svg": "/static/media/DP.22752ecd34c935093330c4806a231226.svg",
+    "index.html": "/index.html",
+    "main.b49d04fe.css.map": "/static/css/main.b49d04fe.css.map",
+    "main.e229d3cb.js.map": "/static/js/main.e229d3cb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b49d04fe.css",
+    "static/js/main.e229d3cb.js"
+  ]
+}
