@@ -157,3 +157,22 @@ window.addEventListener("scroll", function () {
     logo.classList.remove("scrolled");
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Fix for back button
+  var backBtn = document.getElementById('back-btn');
+  if (backBtn) {
+      backBtn.addEventListener('click', function(event) {
+          // You can use either of these approaches:
+          
+          // Option 1: Simple redirect
+          // window.location.href = "index.html";
+          
+          // Option 2: Browser back functionality
+          window.history.back();
+          
+          // Prevent default only if using Option 2
+          event.preventDefault();
+      });
+  }
+});
