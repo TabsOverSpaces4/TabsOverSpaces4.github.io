@@ -1,10 +1,10 @@
 :root {
   color-scheme: light dark;
-  --primary-color: light-dark(#226655, #e2843c);
+  --primary-color: light-dark(#e2843c, #e2843c);
   --text-color: light-dark(#000000, #ffffff);
-  --background-color-primary: light-dark(#ffffff, #16214F);
-  --background-color-secondary: light-dark(#dbdbdb, #575353);
-  --background-color-tr: light-dark(#ddddddbb, #0f173750);
+  --background-color-primary: light-dark(#FCF8E8, #0B192C);
+  --background-color-secondary: light-dark(#FFF2D7, #575353);
+  --background-color-tr: light-dark(#FFE0B5bb, #30475E50);
   --font-size: 16px;
   --font-family: "Roboto", sans-serif;
   --font-weight: 400;
@@ -907,180 +907,503 @@ form {
   }
 }
 
+/* Enhanced Contact Section Styles */
 
-.contact-buttons-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5em;
-  max-width: auto;
-  margin: 2.5em auto;
+/* Main container styles */
+.contact-container {
+  max-width: 1200px; /* Increased for more breathing room */
 }
 
-.contact-button {
+/* Contact cards grid */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Individual card styles */
+.contact-card {
+  position: relative;
   display: flex;
-  align-items: left;
-  padding: 1.2em 1.5em;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--background-color-tr);
   backdrop-filter: blur(var(--blur));
   border-radius: var(--radius-out);
-  border: 2px solid var(--background-color-secondary);
+  border: 2px solid transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
   text-decoration: none;
   color: var(--text-color);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  min-height: 100px;
 }
 
-.contact-button::before {
+/* Card hover effects */
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-color);
+}
+
+.contact-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primary-color);
-  opacity: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(var(--primary-rgb), 0.08) 100%);
   z-index: -1;
-  transition: all 0.4s ease-in-out;
-  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.contact-button:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-5px);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+.contact-card:hover::before {
+  opacity: 1;
 }
 
-.contact-button:hover::before {
-  opacity: 0.1;
-  transform: translateY(0);
+/* Card content layout */
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
 }
 
-.contact-button-icon {
+.card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3em;
-  height: 3em;
-  background-color: var(--background-color-secondary);
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
-  margin-right: 1em;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease;
 }
 
-.contact-button:hover .contact-button-icon {
-  background-color: var(--primary-color);
-  color: var(--background-color-primary);
-  transform: scale(1.1);
+.contact-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
-.contact-button-icon i {
-  font-size: 1.5em;
+.card-icon i {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.contact-button-text {
+.card-info {
   display: flex;
   flex-direction: column;
 }
 
-.contact-button-title {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 0.3em;
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  padding: 0;
+  background: none;
+  color: var(--text-color);
 }
 
-.contact-button-subtitle {
-  font-size: 0.85em;
+.card-subtitle {
+  font-size: 0.9rem;
+  margin: 0;
   opacity: 0.8;
+  line-height: 1.4;
 }
 
-.resume-container {
-  margin: 2em auto;
-  text-align: center;
+/* Card arrow styling */
+.card-arrow {
+  margin-left: 1rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
 }
 
-.button-view {
-  display: inline-block;
-  padding: 1em 2em;
-  background-color: var(--primary-color);
-  color: var(--background-color-primary);
-  border-radius: var(--radius-out);
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid var(--primary-color);
+.contact-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.button-view:hover {
-  background-color: transparent;
+.card-arrow i {
+  font-size: 1.2rem;
   color: var(--primary-color);
 }
 
-/* Email button specific styles */
-.email-button .contact-button-icon {
-  background-color: rgba(234, 67, 53, 0.2);
+/* Card-specific styling */
+.email-card .card-icon {
+  background-color: rgba(234, 67, 53, 0.15);
   color: #EA4335;
 }
 
-.email-button:hover .contact-button-icon {
+.email-card:hover .card-icon {
   background-color: #EA4335;
   color: white;
 }
 
-/* Phone button specific styles */
-.phone-button .contact-button-icon {
-  background-color: rgba(52, 168, 83, 0.2);
+.phone-card .card-icon {
+  background-color: rgba(52, 168, 83, 0.15);
   color: #34A853;
 }
 
-.phone-button:hover .contact-button-icon {
+.phone-card:hover .card-icon {
   background-color: #34A853;
   color: white;
 }
 
-/* LinkedIn button specific styles */
-.linkedin-button .contact-button-icon {
-  background-color: rgba(0, 119, 181, 0.2);
+.linkedin-card .card-icon {
+  background-color: rgba(0, 119, 181, 0.15);
   color: #0077B5;
 }
 
-.linkedin-button:hover .contact-button-icon {
+.linkedin-card:hover .card-icon {
   background-color: #0077B5;
   color: white;
 }
 
-/* WhatsApp button specific styles */
-.whatsapp-button .contact-button-icon {
-  background-color: rgba(37, 211, 102, 0.2);
+.whatsapp-card .card-icon {
+  background-color: rgba(37, 211, 102, 0.15);
   color: #25D366;
 }
 
-.whatsapp-button:hover .contact-button-icon {
+.whatsapp-card:hover .card-icon {
   background-color: #25D366;
   color: white;
 }
 
-/* Responsive styles */
-@media screen {
-  .contact-buttons-container {
-    grid-template-columns: 1fr;
-    gap: 1em;
+/* Resume section styling */
+.resume-action {
+  margin: 3rem auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--background-color-primary);
+  border-radius: var(--radius-out);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--primary-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+  position: relative;
+  overflow: hidden;
+  gap: 0.8rem;
+}
+
+.resume-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: all 0.5s ease;
+}
+
+.resume-button:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.3);
+}
+
+.resume-button:hover::before {
+  transform: translateX(100%) skewX(-15deg);
+}
+
+.button-text {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Availability indicator */
+.availability-indicator {
+  margin: 2rem auto;
+  text-align: center;
+
+}
+
+.availability-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  background-color: rgba(52, 168, 83, 0.1);
+  border: 1px solid rgba(52, 168, 83, 0.3);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #34A853;
+  position: relative;
+  display: inline-block;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #34A853;
+  animation: pulse 1.5s infinite;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+}
+
+.status-text {
+  font-size: 0.95rem;
+  color: #34A853;
+  font-weight: 500;
+}
+
+/* Animated text */
+.animated-text {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1.5rem;
+  font-style: italic;
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
   }
-  
-  .contact-button {
-    padding: 1em 1.2em;
+  70% {
+    transform: scale(2);
+    opacity: 0;
   }
-  
-  .contact-button-icon {
-    width: 2.5em;
-    height: 2.5em;
-    margin-right: 0.8em;
-  }
-  
-  .contact-button-icon i {
-    font-size: 1.2em;
+  100% {
+    transform: scale(1);
+    opacity: 0;
   }
 }
 
-#email-btn {
-  display: none; /* Hide the old email button */
+/* Add this to get the primary color as RGB for shadow effects */
+:root {
+  --primary-rgb: 226, 132, 60; /* This should match your primary color */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .contact-card {
+    padding: 1.2rem;
+    min-height: 80px;
+  }
+  
+  .card-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .card-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .animated-text {
+    max-width: 100%;
+    font-size: 1.1rem;
+    padding-left: 1rem;
+  }
+  
+  .resume-button {
+    width: 100%;
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .availability-status {
+    background-color: rgba(52, 168, 83, 0.15);
+  }
+  
+  .card-icon {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contact-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Ensure smooth transitions when switching between light/dark mode */
+.contact-card, .card-icon, .resume-button, .availability-status {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#contact .content {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+  padding: 0 2%;
+}
+
+/* Additional overrides for contact section elements */
+.contact-card p {
+  padding: 0;
+  text-align: left;
+  margin: 0;
+}
+
+.animated-text {
+  text-align: center !important;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1.5rem !important;
+  max-width: 800px !important;
+  margin: 0 auto 2em !important;
+}
+
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), #ff8b3d);
+  color: white;
+  border-radius: var(--radius-out);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: 2px solid var(--primary-color);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3), 0 6px 6px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto;
+  position: relative;
+  overflow: hidden;
+  gap: 0.8rem;
+  min-width: 260px;
+  transform: scale(1);
+}
+
+.resume-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: all 0.5s ease;
+}
+
+.resume-button:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.4), 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.resume-button:hover::before {
+  transform: translateX(100%) skewX(-15deg);
+}
+
+.resume-button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.25);
+}
+
+.button-text {
+  font-size: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.resume-button:hover .button-icon {
+  transform: translateX(4px);
+}
+
+/* Resume button container styling */
+.resume-action {
+  text-align: center;
+  margin: 3.5rem auto;
+  position: relative;
+}
+
+.resume-action::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-color) 50%, transparent);
+  bottom: -2rem;
+  left: 25%;
+}
+
+/* For dark mode - adjust if necessary */
+@media (prefers-color-scheme: dark) {
+  .resume-button {
+    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.4), 0 6px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Ensure the button is properly sized on mobile */
+@media screen and (max-width: 500px) {
+  .resume-button {
+    width: 90%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .button-text {
+    font-size: 1.1rem;
+  }
 }
